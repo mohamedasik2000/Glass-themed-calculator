@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"><link/>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator-title">
+            <i class="fas fa-calculator"></i>CALCULATOR
+        </div>
+        
+        <div class="display">
+            <button class="history-toggle">
+                <i class="fas fa-history"></i>
+            </button>
+            <div class="previous-operand"></div>
+            <div class="current-operand">0</div>
+        </div>
+        
+        <div class="keypad">
+            <button class="function" data-action="clear">C</button>
+            <button class="function" data-action="backspace"><i class="fas fa-backspace"></i></button>
+            <button class="function" data-action="percentage">%</button>
+            <button class="operator" data-operation="÷">÷</button>
+            
+            <button data-number="7">7</button>
+            <button data-number="8">8</button>
+            <button data-number="9">9</button>
+            <button class="operator" data-operation="×">×</button>
+            
+            <button data-number="4">4</button>
+            <button data-number="5">5</button>
+            <button data-number="6">6</button>
+            <button class="operator" data-operation="-">−</button>
+            
+            <button data-number="1">1</button>
+            <button data-number="2">2</button>
+            <button data-number="3">3</button>
+            <button class="operator" data-operation="+">+</button>
+            
+            <button data-number="0">0</button>
+            <button data-number=".">.</button>
+            <button class="equals" data-action="calculate">=</button>
+        </div>
+        
+        <div class="history-panel">
+            <div class="history-header">
+                <h3><i class="fas fa-history"></i> Calculation History</h3>
+                <button class="close-history"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="history-list"></ul>
+        </div>
+    </div>
+    <div class="trademark-fixed">© Asikdeen</div>
+</body>
+</html>

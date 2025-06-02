@@ -1,0 +1,233 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+        
+        .calculator-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+        }
+        
+        .display {
+            padding: 30px 25px;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: right;
+            position: relative;
+        }
+        
+        .previous-operand {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            min-height: 24px;
+            overflow: hidden;
+        }
+        
+        .current-operand {
+            color: white;
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-top: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        button {
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1.5rem;
+            padding: 20px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+        
+        button:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .operator {
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+        }
+        
+        .equals {
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            grid-column: span 2;
+        }
+        
+        .equals:hover {
+            background: linear-gradient(to right, #ff7700, #c2185b);
+        }
+        
+        .function {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .calculator-title {
+            text-align: center;
+            padding: 15px;
+            color: white;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .calculator-title i {
+            margin-right: 10px;
+            color: #ff8a00;
+        }
+        
+        .history-toggle {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .history-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .history-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            color: white;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            overflow-y: auto;
+        }
+        
+        .history-panel.active {
+            transform: translateX(0);
+        }
+        
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .close-history {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .history-list {
+            list-style: none;
+        }
+        
+        .history-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+        
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .trademark-fixed {
+            position: fixed;
+            bottom: 10px;
+            right: 15px;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+            pointer-events: none; /* ensures it doesn't interfere with clicks */
+            user-select: none;
+        }
+
+        @media (max-width: 480px) {
+            .calculator-container {
+                max-width: 100%;
+            }
+            
+            .display {
+                padding: 25px 20px;
+            }
+            
+            .current-operand {
+                font-size: 2.2rem;
+            }
+            
+            button {
+                padding: 18px 5px;
+                font-size: 1.3rem;
+            }
+        }
